@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F083E1722B07AA000481A9F /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F083E1622B07AA000481A9F /* Snap.swift */; };
 		1F131CE3229C99FB005CCC50 /* ElegirUsuarioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F131CE2229C99FB005CCC50 /* ElegirUsuarioVC.swift */; };
+		1F3EC3D922A194AC0003DEFC /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3EC3D822A194AC0003DEFC /* Usuario.swift */; };
+		1F7648A222B1BDC5003B0884 /* VerSnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7648A122B1BDC5003B0884 /* VerSnapVC.swift */; };
 		1FC1ECEE2294A23F00B661D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1ECED2294A23F00B661D0 /* AppDelegate.swift */; };
 		1FC1ECF02294A23F00B661D0 /* IniciarSesionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1ECEF2294A23F00B661D0 /* IniciarSesionVC.swift */; };
 		1FC1ECF32294A23F00B661D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FC1ECF12294A23F00B661D0 /* Main.storyboard */; };
@@ -21,7 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F083E1622B07AA000481A9F /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		1F131CE2229C99FB005CCC50 /* ElegirUsuarioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioVC.swift; sourceTree = "<group>"; };
+		1F3EC3D822A194AC0003DEFC /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		1F7648A122B1BDC5003B0884 /* VerSnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerSnapVC.swift; sourceTree = "<group>"; };
 		1FC1ECEA2294A23F00B661D0 /* SoundBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC1ECED2294A23F00B661D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FC1ECEF2294A23F00B661D0 /* IniciarSesionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionVC.swift; sourceTree = "<group>"; };
@@ -51,6 +57,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F3EC3D622A1938F0003DEFC /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1FC1ECEF2294A23F00B661D0 /* IniciarSesionVC.swift */,
+				1FC1ED092294C19400B661D0 /* ImageVC.swift */,
+				1FC1ED072294BEEE00B661D0 /* SnapsVC.swift */,
+				1F131CE2229C99FB005CCC50 /* ElegirUsuarioVC.swift */,
+				1F7648A122B1BDC5003B0884 /* VerSnapVC.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		1F3EC3D722A194630003DEFC /* models */ = {
+			isa = PBXGroup;
+			children = (
+				1F3EC3D822A194AC0003DEFC /* Usuario.swift */,
+				1F083E1622B07AA000481A9F /* Snap.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		1FC1ECE12294A23F00B661D0 = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +99,10 @@
 		1FC1ECEC2294A23F00B661D0 /* SoundBoard */ = {
 			isa = PBXGroup;
 			children = (
+				1F3EC3D722A194630003DEFC /* models */,
+				1F3EC3D622A1938F0003DEFC /* viewControllers */,
 				1FC1ED062294BCDA00B661D0 /* SoundBoard.entitlements */,
 				1FC1ECED2294A23F00B661D0 /* AppDelegate.swift */,
-				1FC1ECEF2294A23F00B661D0 /* IniciarSesionVC.swift */,
-				1FC1ED092294C19400B661D0 /* ImageVC.swift */,
-				1FC1ED072294BEEE00B661D0 /* SnapsVC.swift */,
-				1F131CE2229C99FB005CCC50 /* ElegirUsuarioVC.swift */,
 				1FC1ECF12294A23F00B661D0 /* Main.storyboard */,
 				1FC1ECF92294A24200B661D0 /* LaunchScreen.storyboard */,
 				1FC1ECF72294A24200B661D0 /* Assets.xcassets */,
@@ -213,18 +238,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SoundBoard/Pods-SoundBoard-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -240,10 +263,13 @@
 			files = (
 				1FC1ECF62294A23F00B661D0 /* SoundBoard.xcdatamodeld in Sources */,
 				1FC1ECF02294A23F00B661D0 /* IniciarSesionVC.swift in Sources */,
+				1F7648A222B1BDC5003B0884 /* VerSnapVC.swift in Sources */,
+				1F3EC3D922A194AC0003DEFC /* Usuario.swift in Sources */,
 				1FC1ED0A2294C19400B661D0 /* ImageVC.swift in Sources */,
 				1FC1ED082294BEEE00B661D0 /* SnapsVC.swift in Sources */,
 				1FC1ECEE2294A23F00B661D0 /* AppDelegate.swift in Sources */,
 				1F131CE3229C99FB005CCC50 /* ElegirUsuarioVC.swift in Sources */,
+				1F083E1722B07AA000481A9F /* Snap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,16 +15,20 @@ class ImageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     @IBOutlet weak var txtDescripcion: UITextField!
     @IBOutlet weak var btnContacto: UIButton!
     
+    //  Variable creadas
     var imgPicker = UIImagePickerController()
+    var imgID = NSUUID().uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imgPicker.delegate = self
-
-        // Do any additional setup after loading the view.
+        
+        btnContacto.isEnabled = false
+        
     }
     @IBAction func cameraTapped(_ sender: Any) {
+        imgPicker.sourceType = .camera
         imgPicker.sourceType = .savedPhotosAlbum
         imgPicker.allowsEditing = false
         present(imgPicker, animated: true, completion: nil)
@@ -32,14 +36,17 @@ class ImageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     @IBAction func elegirContactoTapped(_ sender: Any) {
         btnContacto.isEnabled = false
-        let imgFolder = Storage.storage().reference().child("imagenes")
+        let imgFolder = FIRStorage.storage().reference().child("imagenes")
         let imgData = UIImagePNGRepresentation(imgView.image!)!
-        performSegue(withIdentifier: "seleccionarContactoSegue", sender: nil)
-        imgFolder.child("imagenes.png").putData(imgData, metadata: nil, completion: {(metadata, error) in
+        
+        imgFolder.child("\(imgID).png").put(imgData, metadata: nil, completion: {(metadata, error) in
             print("============================")
             print("Intentando subir la imagen")
             if error != nil{
                 print("Ocurrio un error: \(String(describing: error))")
+            } else {
+                
+                self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: metadata?.downloadURL()?.absoluteString)
             }
         })
     }
@@ -48,20 +55,25 @@ class ImageVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imgView.image = image
         imgView.backgroundColor = UIColor.clear
+        btnContacto.isEnabled = true
         imgPicker.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let imgFolder = Storage.storage().reference().child("imagenes")
-        let imgData = UIImageJPEGRepresentation(imgView.image!, 0.1)!
-        
-        imgFolder.child("\(NSUUID().uuidString).jpg").putData(imgData, metadata: nil, completion: {(metadata, error) in
-            print("============================")
-            print("Intentando subir la imagen")
-            if error != nil{
-                print("Ocurrio un error: \(String(describing: error))")
-            }
-        })
+//        let imgFolder = FIRStorage.storage().reference().child("imagenes")
+//        let imgData = UIImageJPEGRepresentation(imgView.image!, 0.1)!
+//
+//        imgFolder.child("\(NSUUID().uuidString).jpg").put(imgData, metadata: nil, completion: {(metadata, error) in
+//            print("============================")
+//            print("Intentando subir la imagen")
+//            if error != nil{
+//                print("Ocurrio un error: \(String(describing: error))")
+//            }
+//        })
+        let sigVC = segue.destination as! ElegirUsuarioVC
+        sigVC.imagenURL = sender as! String
+        sigVC.descrip = txtDescripcion.text!
+        sigVC.imgID = imgID
     }
     
 }
